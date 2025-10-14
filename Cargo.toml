@@ -1,0 +1,47 @@
+[package]
+name = "dd-3d-lottery"
+version = "0.1.0"
+edition = "2021"
+description = "DD 3D Lottery - 基于区块链高度的三阶段彩票智能合约"
+authors = ["Luckee DAO Team"]
+license = "MIT"
+repository = "https://github.com/luckee-dao/dd-3d-lottery"
+homepage = "https://luckee-dao.com"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+cosmwasm-schema = { version = "2.2.2", default-features = false }
+cosmwasm-std = "2.2.2"
+cw-storage-plus = "2"
+cw2 = "2"
+cw-utils = "2.0"
+schemars = "0.8"
+serde = { version = "1.0", default-features = false, features = ["derive"] }
+thiserror = "1.0"
+sha2 = "0.10"
+hex = "0.4"
+dd_algorithms_lib = { path = "../../dd_algorithms_lib" }
+
+[dev-dependencies]
+cw-multi-test = "2.0"
+
+[package.metadata.scripts]
+optimize = """docker run --rm -v "$(pwd)":/code \
+  --mount type=volume,source="$(basename "$(pwd)")_cache",target=/target \
+  --mount type=volume,source=registry_cache,target=/usr/local/cargo/registry \
+  cosmwasm/optimizer:0.16.0
+"""
+
+
+[profile.release]
+opt-level = 3
+debug = false
+rpath = false
+lto = true
+debug-assertions = false
+codegen-units = 1
+panic = 'abort'
+incremental = false
+overflow-checks = true
