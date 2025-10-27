@@ -113,3 +113,49 @@ coverage/
 # Backup files
 *.bak
 *.backup
+
+# 文档目录（项目内部文档）
+docs/
+documentation/
+*.md
+!README.md
+
+# 脚本目录
+scripts/
+deploy/
+deployment/
+
+# 密码和敏感文件
+*.key
+*.pem
+*.p12
+*.pfx
+secrets/
+keys/
+private/
+wallet-*.json
+account-*.json
+mnemonic-*.txt
+private-key-*.txt
+*.secret
+*.password
+
+# 环境配置和部署信息
+env/
+*.env
+deployment-config.env
+deployment-*.json
+deployment-info.json
+*.deployment.json
+contract_deployment_info.json
+account_info.json
+network_configs.json
+
+# 测试和验证文件
+test_address_validation.sh
+test_nft_delivery.sh
+*_report.md
+*_analysis.md
+*_summary.md
+*_fix.md
+*_verification.md
